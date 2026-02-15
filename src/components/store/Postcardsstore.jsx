@@ -11,14 +11,14 @@ const ReducerList=(currentList,action)=>{
    if(action.type==="delete"){
       newList= (currentList.filter(item=>item.id!=action.payload.postId)) 
    }
-   else if(action.type=="add"){
+   else if(action.type==="add"){
       newList=[...currentList,{
-         id:(currentList.length+1),
+         id:(currentList.length)+1,
          topic:action.payload.topic,
          content:action.payload.content,
-         tags:action.payload.tags,
+         tags:Array.isArray(action.payload.tags)?(action.payload.tags):[],
          username:action.payload.username,
-         reactions:action.payload.reactions,
+         reactions:action.payload.reactions && typeof(action.payload.reactions==="object")?(parseInt(action.payload.reactions.likes||0))+(parseInt(action.payload.reactions.dislikes||0)):(action.payload.reactions||0),
       }]
    }
    return newList;

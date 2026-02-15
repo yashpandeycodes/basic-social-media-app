@@ -1,25 +1,32 @@
-import { useContext, useRef ,useState } from "react";
+import { useContext, useRef } from "react";
 import { pList } from "./store/Postcardsstore";
 const Create=()=>{
  const {addPost}=useContext(pList);
 const postTitleElement=useRef();
 const useridElement=useRef();
 const postcontentElement=useRef();
-const postReactionElement=useRef();
+const postLikeElement=useRef();
+const postDislikeElement=useRef();
 const postTagElement=useRef();
 const handleSubmit=(event)=>{
   event.preventDefault();
   const postTitle=postTitleElement.current.value;
   const userid=useridElement.current.value;
   const postcontent=postcontentElement.current.value;
-  const postReaction=postReactionElement.current.value;
+  const postLike=postLikeElement.current.value;
+  const postDislike=postDislikeElement.current.value;
   const postTag=postTagElement.current.value.split(" ");
+  const postReaction={
+    likes:postLike,
+    dislikes:postDislike,
+  }
   addPost(postTitle,userid,postcontent,postReaction,postTag);
 
   postTitleElement.current.value="";
   useridElement.current.value="";
   postcontentElement.current.value="";
-  postReactionElement.current.value="";
+  postLikeElement.current.value="";
+  postDislikeElement.current.value="";
   postTagElement.current.value="";
 }
   return (
@@ -37,8 +44,12 @@ const handleSubmit=(event)=>{
     <textarea type="text" class="form-control" id="content" rows="4" placeholder="Explain more about your feeling..." ref={postcontentElement}/>
   </div>
    <div class="mb-3">
-    <label for="reactions" class="form-label">Reactions</label>
-    <input type="text" class="form-control" id="reactions"placeholder="How many people reacted on this post?" ref={postReactionElement}/>
+    <label for="reactions" class="form-label">Likes</label>
+    <input type="text" class="form-control" id="reactions"placeholder="How many people liked this post?" ref={postLikeElement}/>
+  </div>
+  <div class="mb-3">
+    <label for="reactions" class="form-label">Dislikes</label>
+    <input type="text" class="form-control" id="reactions"placeholder="How many people disliked this post?" ref={postDislikeElement}/>
   </div>
    <div class="mb-3">
     <label for="tags" class="form-label">Tags</label>
