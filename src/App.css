@@ -1,0 +1,43 @@
+.container{
+  max-height: 80px;
+}
+.Main-container{
+  display: flex;
+}
+.main-content{
+width:100%;
+}
+.sidebar{
+  min-height: 750px;
+}
+.card{
+  width:40rem;
+   margin:20px;
+   background-image: url("reactp.jpg");
+   background-size: cover;
+}
+.tagsbutton{
+   height:29px;
+   margin:1px 3px;
+   font-size:10px;
+   
+}
+.success{
+  width:100%;
+  background-color: rgb(87, 215, 143);
+  height:60px;
+}
+.reactions{
+  margin-top:20px;
+}
+form{
+  width:80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+.subhead{
+  margin-left: 50px;
+}
+.inp{
+   margin-top: -16px;
+}
